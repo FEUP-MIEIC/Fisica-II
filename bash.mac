@@ -46,3 +46,18 @@ Rp([l]):= block([s:0],
     for i:1 thru length(l) do
         s: s+1/l[i],
     float(1/s))$
+
+/***************************************/
+/************CONDENSADORES**************/
+
+/* Capacidade equivalente de Condensadores em paralelo */
+Cp([l]):= block([s:0],
+    for i:1 thru length(l) do
+        s: s+l[i],
+    float(s))$
+
+/* Capacidade equivalente de Condensadores em série */
+Cs([l]):= block([s:0],
+    for i:1 thru length(l) do
+        s: s+1/l[i],
+    float(1/s))$
