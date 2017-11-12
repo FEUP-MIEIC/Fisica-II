@@ -1,0 +1,48 @@
+/*=====================================*/
+/*==============CONSTANTES=============*/
+/*=====================================*/
+
+/* Constante coulomb */
+k:9.0e9$
+
+/* Carga elementar */
+carga:1.602e-19$
+
+/* Massa eletrao */
+mE:9.109e-31$
+
+/* Massa protao */
+mP:1.673e-27$
+
+/*=====================================*/
+/*===============FUNCOES===============*/
+/*=====================================*/
+
+/***************************************/
+/*************CAMPO ELETRICO************/
+
+/* 
+ * Força entre cargas (N)
+ * k -> constante coulomb (N*m^2/C)
+ * K -> constante dieletrica do meio onde se encontram as cargas
+ */
+Feletrica(q1,q2,d,K):=float((k*q1*q2)/(K*d^2))$
+
+/* Campo elétrico (N/C) */
+CampoE(F, q0):=float(F/q0)$
+
+
+/***************************************/
+/*************RESISTENCIAS**************/
+
+/* Resistências em série */
+Rs([l]):= block([s:0],
+    for i:1 thru length(l) do
+        s: s+l[i],
+    float(s))$
+
+/* Resistências em paralelo */
+Rp([l]):= block([s:0],
+    for i:1 thru length(l) do
+        s: s+1/l[i],
+    float(1/s))$
