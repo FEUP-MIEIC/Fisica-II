@@ -61,3 +61,26 @@ Cs([l]):= block([s:0],
     for i:1 thru length(l) do
         s: s+1/l[i],
     float(1/s))$
+
+/* 
+ * Capacidade condensador plano 
+ * A -> área das armaduras (m^2)
+ * d -> distancia entre as armaduras (m)
+ * K -> constante dieletrica (isolador)
+ */
+Cplano(A, d, K):=float((K*A)/(k*4*%pi*d))$
+
+/* 
+ * Capacidade condensador esférico simples 
+ * r -> raio da esfera (m)
+ * K -> constante dieletrica (isolador)
+ */
+Cesfera(r, K):=float(K*r/k)$
+
+/* 
+ * Capacidade condensador esférico (donut, duas esferas) 
+ * r1 -> raio da esfera mais interior (m)
+ * r2 -> raio da esfera mais exterior (m)
+ * K -> constante dieletrica (isolador)
+ */
+Cesferico(r1, r2, K):=float((K*r1*r2)/(k*(r2-r1)))$
